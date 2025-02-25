@@ -23,7 +23,7 @@ function ImageUpload() {
     formData.append('email', email);
 
     try {
-      const response = await axios.post('/api/v1/upload/imageUpload', formData, {
+      const response = await axios.post('https://file-upload-mern.vercel.app/api/v1/upload/imageUpload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: (progressEvent) => {
           setUploadProgress(Math.round((progressEvent.loaded * 100) / progressEvent.total));
