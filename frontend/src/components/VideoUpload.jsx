@@ -36,6 +36,11 @@ function VideoUpload() {
         (error.response && error.response.data.message) || 'Video upload failed!'
       );
     }
+    // again all empty
+    setName('');
+    setEmail('');
+    setTags('');
+    setVideoFile(null);
   };
 
   return (
