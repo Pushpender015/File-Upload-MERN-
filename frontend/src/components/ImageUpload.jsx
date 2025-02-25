@@ -36,6 +36,11 @@ function ImageUpload() {
         (error.response && error.response.data.message) || 'Image upload failed!'
       );
     }
+    // again all empty
+    setName('');
+    setEmail('');
+    setTags('');
+    setImageFile(null);
   };
 
   return (
