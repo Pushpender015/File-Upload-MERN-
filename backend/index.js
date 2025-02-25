@@ -5,7 +5,7 @@ const cors = require("cors");
 // Middleware for CORS
 app.use(cors({
   origin: [
-    'http://localhost:3000' // Frontend server origin (React app running locally)
+    'https://file-upload-mern-9pwh.vercel.app' // Frontend server origin (React app running locally)
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
   credentials: true, // Enable sending cookies if needed
