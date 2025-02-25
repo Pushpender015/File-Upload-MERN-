@@ -1,23 +1,28 @@
+// index.js
 const express = require("express");
-const app = express();
 const cors = require("cors");
+const fileupload = require("express-fileupload");
+require("dotenv").config();
 
-// Middleware for CORS
-app.use(cors({
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+// Configure CORS to allow requests from your deployed frontend
+const corsOptions = {
   origin: [
-    'https://file-upload-mern-9pwh.vercel.app' // Frontend server origin (React app running locally)
+    'https://file-upload-mern-9pwh.vercel.app' // Deployed React frontend URL
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-  credentials: true, // Enable sending cookies if needed
-  allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
-}));
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+app.use(cors(corsOptions));
 
 // MIDDLEWARES
 app.use(express.json());
-const fileupload = require("express-fileupload");
 app.use(fileupload({
-    useTempFiles: true,
-    tempFileDir: '/tmp/'
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
 }));
 
 // Database connection
@@ -28,55 +33,16 @@ db.connect();
 const cloudinary = require("./Config/cloudinary");
 cloudinary.cloudinaryConnect();
 
-// Routes
+// Routes for file uploads
 const Upload = require("./Routes/FileUpload");
 app.use("/api/v1/upload", Upload);
 
-// Starting the server
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-    console.log(`App is running on port ${PORT}`);
-});
-
+// Test route to verify the server is working
 app.get("/", (req, res) => {
-    res.send("<h1>App working properly</h1>");
+  res.send("<h1>App working properly</h1>");
 });
 
-
-// // app create
-// const epxress = require("express");
-// const app = epxress();
-
-// // PORT find out
-// const PORT = process.env.PORT || 4000
-
-// // MIDDLEWARE ADD
-//     // 1. for parsing a body
-//     app.use(epxress.json());
-//     // 2. for file upload 
-//     const fileupload = require("express-fileupload");
-//     app.use(fileupload({
-//         useTempFiles: true,
-//         tempFileDir : '/tmp/'
-//     }));
-
-// // DB connection stablished
-// const db = require("./Config/database");
-// db.connect();
-
-// // cloud connection stablished
-// const clouldinary = require("./Config/cloudinary");
-// clouldinary.cloudinaryConnect();
-
-// // api route mount
-// const Upload = require("./Routes/FileUpload");
-// app.use("/api/v1/upload" , Upload);
-
-// // activation server
-// app.listen(PORT , () => {
-//     console.log(`App is running at ${PORT}`);
-// })
-
-// app.get("/" , (req , res) => {
-//     res.send("<h1>app working properly</h1>");
-// })
+// Start the server
+app.listen(PORT, () => {
+  console.log(`App is running on port ${PORT}`);
+});
