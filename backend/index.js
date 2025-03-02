@@ -8,19 +8,15 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Configure CORS to allow requests from your deployed frontend
-const corsOptions = {
+app.use(cors({
   origin: [
-    'https://file-upload-mern-9pwh.vercel.app' // Deployed React frontend URL
+    'https://file-upload-mern-9pwh.vercel.app', // Frontend
+    'http://localhost:3000' // Local testing
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Add all the required methods
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token', 'X-Requested-With', 'Accept', 'Accept-Version', 'Content-Length', 'Content-MD5', 'Date', 'X-Api-Version']
-};
-
-app.use(cors(corsOptions));
-// Explicitly handle preflight OPTIONS requests
-app.options("*", cors(corsOptions));
-
+}));
 
 // MIDDLEWARES
 app.use(express.json());
