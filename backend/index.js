@@ -12,11 +12,13 @@ const corsOptions = {
   origin: [
     'https://file-upload-mern-9pwh.vercel.app' // Deployed React frontend URL
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Add all the required methods
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token', 'X-Requested-With', 'Accept', 'Accept-Version', 'Content-Length', 'Content-MD5', 'Date', 'X-Api-Version']
 };
+
 app.use(cors(corsOptions));
+
 
 // MIDDLEWARES
 app.use(express.json());
