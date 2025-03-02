@@ -11,7 +11,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "https://file-upload-alpha-eight.vercel.app",
+  "proxy": "https://file-upload-mern.vercel.app",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git"
