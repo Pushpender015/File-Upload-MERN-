@@ -78,7 +78,7 @@ function ImageUpload() {
           />
         </div>
         <div className="flex flex-col">
-          <label className="font-medium text-gray-700">Image File</label>
+          <label className="font-medium text-gray-700">Image File (upload less than 2mb)</label>
           <input
             type="file"
             onChange={(e) => setImageFile(e.target.files[0])}
