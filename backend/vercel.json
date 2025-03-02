@@ -12,7 +12,4 @@
       "dest": "/index.js"
     }
   ],
-  "env": {
-    "PORT": "4000"  // Ensure environment variables such as PORT are configured correctly in your Vercel dashboard
-  }
 }
