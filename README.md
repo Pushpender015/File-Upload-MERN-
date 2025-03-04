@@ -53,8 +53,7 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that allo
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/mern-file-upload.git
-cd mern-file-upload
+git clone https://github.com/Pushpender015/File-Upload-MERN-.git
 ```
 
 ### 2. Set up the Backend (Node.js/Express.js)
