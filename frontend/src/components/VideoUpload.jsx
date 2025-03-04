@@ -78,7 +78,7 @@ function VideoUpload() {
           />
         </div>
         <div className="flex flex-col">
-          <label className="font-medium text-gray-700">Video File (upload less than 2mb)</label>
+          <label className="font-medium text-gray-700">Video File <i>(.mp4 , .mov)</i></label>
           <input
             type="file"
             onChange={(e) => setVideoFile(e.target.files[0])}
